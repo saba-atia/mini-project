@@ -18,33 +18,33 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/home', function () {
-return view('homepage');
+Route::get('/', function () {
+return view('public_site.layouts.homepage');
 });
 
 Route::get('/about', function () {
-    return view('aboutpage');
+    return view('public_site.layouts.aboutpage');
     });
     
     Route::get('/ourroom', function () {
-        return view('roompage');
+        return view('public_site.layouts.roompage');
         });
 
         Route::get('/gallery', function () {
-            return view('gallerypage');
+            return view('public_site.layouts.blogpage');
             });
 
             Route::get('/blog', function () {
-                return view('blogpage');
+                return view('public_site.layouts.blogpage');
                 });
 
                 Route::get('/contact', function () {
-                    return view('contactpage');
+                    return view('public_site.layouts.contactpage');
                     });
 
 
                     Route::get('/dash', function () {
-                        return view('layouts.dashbord');
+                        return view('dashborde.layouts.dashbord');
                     });
 
 
