@@ -3,6 +3,11 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\AdminController;
+
+
+
 
 /*
 
@@ -31,7 +36,7 @@ Route::get('/about', function () {
         });
 
         Route::get('/gallery', function () {
-            return view('public_site.layouts.blogpage');
+            return view('public_site.layouts.gallerypage');
             });
 
             Route::get('/blog', function () {
@@ -43,11 +48,25 @@ Route::get('/about', function () {
                     });
 
 
-                    Route::get('/dash', function () {
-                        return view('dashborde.layouts.dashbord');
-                    });
+                    // Route::get('/dash', function () {
+                    //     return view('dashborde.layouts.dashbord');
+                    // });
 
+                    Route::get('/dash', [AdminController::class, 'dashboard'])->name('dashboard');
 
                     Route::resource('users', UsersController::class);
 
                     Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+
+
+
+                    // Route::prefix('/admin')->group(function () {
+                    //     Route::resource('profile', AdminProfileController::class)->only(['edit', 'update']);
+                    // });
+
+
+Route::resource('admins', AdminController::class);
+
+Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+
